@@ -8,8 +8,8 @@ import java.util.Map;
 @RestController
 public class HealthController {
 
-    // Only path render.yaml healthCheckPath + Dockerfile HEALTHCHECK use.
-    @GetMapping("/api/v1/health")
+    // Mapped to root, /health, and /api/v1/health so uptime monitors and Render health checks succeed.
+    @GetMapping({"/", "/health", "/api/v1/health"})
     public Map<String, String> health() {
         return Map.of("status", "ok");
     }
